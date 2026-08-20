@@ -31,7 +31,7 @@ declare global {
 }
 
 const logoUrl = "/manus-storage/marca-escola-incorporadores_b457d9df.png";
-const heroImageUrl = "/manus-storage/hero-estudo-incorporacao_40cd312e.jpg";
+const josePhotoUrl = "/manus-storage/jose-carlos-cardoso_c9c3a2cf.jpg";
 const facadeImageUrl = "/manus-storage/fachada-contemporanea_85ebbcb5.jpg";
 const planImageUrl = "/manus-storage/planta-viabilidade_a8868ecd.jpg";
 
@@ -164,9 +164,9 @@ export default function Home() {
       <main>
         <section className="hero-section">
           <div className="hero-image-wrap">
-            <img src={heroImageUrl} alt="Estudo de implantação e modelo arquitetônico" className="hero-image" />
+            <img src={josePhotoUrl} alt="José Carlos Cardoso" className="hero-image" />
             <div className="hero-image-overlay" />
-            <div className="hero-image-caption"><span>ESTUDO / 01</span><span>NEGÓCIO ANTES DA OBRA</span></div>
+            <div className="hero-image-caption"><span>JOSÉ CARLOS CARDOSO</span><span>ESCOLA DE INCORPORADORES</span></div>
           </div>
           <div className="hero-content">
             <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> ESCOLA DE INCORPORADORES</span>
@@ -254,7 +254,9 @@ export default function Home() {
 
         <section className="section authority-section section--paper">
           <div className="authority-photo-placeholder">
-            <div className="placeholder-frame"><span>CADERNO DO INCORPORADOR</span><strong>JCC</strong><small>ESTRUTURA<br />ANTES DA OBRA</small></div>
+            <img src={josePhotoUrl} alt="José Carlos Cardoso, empresário e incorporador" />
+            <div className="authority-photo-shade" />
+            <div className="authority-photo-caption"><span>JCC / 01</span><strong>Raciocínio empresarial<br />antes da obra.</strong></div>
           </div>
           <div className="authority-copy">
             <div className="section-index"><span>04</span><div /><small>QUEM CONDUZ A AULA</small></div>
@@ -307,7 +309,7 @@ export default function Home() {
           <div><p>Capital próprio pode construir uma obra.</p><h2>Modelo de negócio pode construir <em>uma incorporadora.</em></h2><p className="final-subtitle">O próximo nível do construtor não é simplesmente construir mais. É aprender a incorporar.</p><a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("cta_final")}>Quero estar na aula <ArrowDownRight size={19} /></a></div>
         </section>
 
-        <section className="section faq-section section--paper">
+        <section className="section faq-section">
           <div className="faq-intro"><span className="section-kicker">Perguntas objetivas</span><h2>Antes de você decidir.</h2><p>O que já está definido sobre a aula e o que ainda precisa ser confirmado pela organização.</p></div>
           <Accordion type="single" collapsible className="faq-list">
             {faqs.map((faq, index) => <AccordionItem value={`item-${index}`} key={faq.question}><AccordionTrigger><span>0{index + 1}</span>{faq.question}<ChevronDown /></AccordionTrigger><AccordionContent>{faq.answer}</AccordionContent></AccordionItem>)}
