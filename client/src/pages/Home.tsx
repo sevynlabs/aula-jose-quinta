@@ -30,12 +30,17 @@ declare global {
   }
 }
 
-const logoUrl = "/manus-storage/escola-incorporadores-logo_79ad98da.png";
-const josePhotoUrl = "/manus-storage/jose-carlos-cardoso_c9c3a2cf.jpg";
-const joseHeroUrl = "/manus-storage/jose-hero-escura_94e894d4.png";
-const joseMobileHeroUrl = "/manus-storage/jose-hero-mobile-central_33934ce1.png";
-const facadeImageUrl = "/manus-storage/fachada-contemporanea_85ebbcb5.jpg";
-const planImageUrl = "/manus-storage/planta-viabilidade_a8868ecd.jpg";
+const storageOrigin = typeof window !== "undefined" && window.location.hostname.endsWith(".manus.space")
+  ? ""
+  : "https://escolaland-rgqhosht.manus.space";
+const storageAsset = (filename: string) => `${storageOrigin}/manus-storage/${filename}`;
+
+const logoUrl = storageAsset("escola-incorporadores-logo_79ad98da.png");
+const josePhotoUrl = storageAsset("jose-carlos-cardoso_c9c3a2cf.jpg");
+const joseHeroUrl = storageAsset("jose-hero-escura_94e894d4.png");
+const joseMobileHeroUrl = storageAsset("jose-hero-mobile-central_33934ce1.png");
+const facadeImageUrl = storageAsset("fachada-contemporanea_85ebbcb5.jpg");
+const planImageUrl = storageAsset("planta-viabilidade_a8868ecd.jpg");
 
 const navItems = [
   ["01", "Diagnóstico", "#diagnostico"],
