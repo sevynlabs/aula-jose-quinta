@@ -33,6 +33,7 @@ declare global {
 const logoUrl = "/manus-storage/marca-escola-incorporadores_b457d9df.png";
 const josePhotoUrl = "/manus-storage/jose-carlos-cardoso_c9c3a2cf.jpg";
 const joseHeroUrl = "/manus-storage/jose-hero-escura_94e894d4.png";
+const joseMobileHeroUrl = "/manus-storage/jose-hero-mobile_ae3120b1.png";
 const facadeImageUrl = "/manus-storage/fachada-contemporanea_85ebbcb5.jpg";
 const planImageUrl = "/manus-storage/planta-viabilidade_a8868ecd.jpg";
 
@@ -165,7 +166,10 @@ export default function Home() {
       <main>
         <section className="hero-section">
           <div className="hero-image-wrap hero-image-wrap--portrait">
-            <img src={joseHeroUrl} alt="José Carlos Cardoso" className="hero-image hero-image--portrait" />
+            <picture>
+              <source media="(max-width: 860px)" srcSet={joseMobileHeroUrl} />
+              <img src={joseHeroUrl} alt="José Carlos Cardoso" className="hero-image hero-image--portrait" />
+            </picture>
             <div className="hero-image-overlay" />
             <div className="hero-image-caption"><span>JOSÉ CARLOS CARDOSO</span><span>ESCOLA DE INCORPORADORES</span></div>
           </div>
