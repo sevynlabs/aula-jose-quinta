@@ -19,5 +19,5 @@
 - [ ] Direcionar CTAs e formulário ao checkout, registrando o lead no endpoint de Google Sheets.
 - [ ] Preparar a configuração de implantação e publicar a landing page no Vercel.
 - [ ] Ajustar a saída estática e o roteamento do projeto para implantação no Vercel.
-- [ ] Criar commit e enviar as alterações atuais ao repositório conectado.
+- [x] Criar commit e enviar as alterações atuais ao repositório conectado.
 - [x] Substituir a marca atual pela logo anexada e ajustar o tamanho responsivo.
