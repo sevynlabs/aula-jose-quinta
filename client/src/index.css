@@ -314,7 +314,7 @@
   .hero-image-wrap--portrait { height: 410px; bottom: auto; overflow: hidden; }
   .hero-image-wrap--portrait:after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg,rgba(6,23,25,.03) 0%,rgba(6,23,25,.08) 39%,var(--ink) 100%); }
   .hero-image--cutout { object-position: 72% 26%; transform: scaleX(-1) scale(1.18); transform-origin: 67% 35%; opacity: .9; }
-  .hero-image--portrait { object-position: center 30%; transform: none; opacity: .98; filter: saturate(.72) contrast(1.08) brightness(.79); }
+  .hero-image--portrait { object-position: center top; transform: none; opacity: .98; filter: saturate(.72) contrast(1.08) brightness(.79); }
   .hero-image-overlay { background: radial-gradient(circle at 78% 9%,rgba(222,177,89,.15),transparent 29%),linear-gradient(180deg,rgba(6,23,25,.07) 0%,rgba(6,23,25,.68) 43%,var(--ink) 100%); }
   .hero-image-caption, .hero-page-number { display: none; }
   .hero-content { max-width: 100%; position: relative; z-index: 3; padding-top: 235px; }

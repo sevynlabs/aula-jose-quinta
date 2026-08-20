@@ -10,3 +10,4 @@
 - [x] Reposicionar o rosto de José no mobile para fora da zona ocupada pela headline e pela CTA.
 - [x] Centralizar a foto de José no topo do mobile e iniciar a headline abaixo da metade da imagem.
 - [x] Centralizar o rosto de José no eixo horizontal da hero mobile.
+- [x] Garantir margem superior suficiente para a cabeça de José não ser cortada no mobile.
