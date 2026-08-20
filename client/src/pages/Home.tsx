@@ -33,7 +33,7 @@ declare global {
 const logoUrl = "/manus-storage/marca-escola-incorporadores_b457d9df.png";
 const josePhotoUrl = "/manus-storage/jose-carlos-cardoso_c9c3a2cf.jpg";
 const joseHeroUrl = "/manus-storage/jose-hero-escura_94e894d4.png";
-const joseMobileHeroUrl = "/manus-storage/jose-hero-mobile_ae3120b1.png";
+const joseMobileHeroUrl = "/manus-storage/jose-hero-mobile-central_33934ce1.png";
 const facadeImageUrl = "/manus-storage/fachada-contemporanea_85ebbcb5.jpg";
 const planImageUrl = "/manus-storage/planta-viabilidade_a8868ecd.jpg";
 

@@ -9,3 +9,4 @@
 - [x] Ajustar posição, escala e sobreposição do retrato de José para a hero mobile.
 - [x] Reposicionar o rosto de José no mobile para fora da zona ocupada pela headline e pela CTA.
 - [x] Centralizar a foto de José no topo do mobile e iniciar a headline abaixo da metade da imagem.
+- [x] Centralizar o rosto de José no eixo horizontal da hero mobile.
