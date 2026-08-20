@@ -243,7 +243,6 @@
 .event-details span { font-size: 9px; letter-spacing: .12em; font-weight: 700; color: #6e7972; padding-top: 3px; }
 .event-details strong { font-size: 12px; line-height: 1.4; }
 .registration-form { background: radial-gradient(circle at 100% 0,rgba(196,162,106,.13),transparent 34%),var(--ink); color: var(--text); padding: 28px; border: 1px solid rgba(196,162,106,.42); box-shadow: 15px 15px 0 rgba(196,162,106,.22), 0 26px 60px rgba(6,23,25,.2); }
-.lead-capture-frame { display: none; }
 .form-topline { display: flex; justify-content: space-between; color: var(--gold-light); font-size: 9px; font-weight: 700; letter-spacing: .12em; border-bottom: 1px solid var(--line-light); padding-bottom: 16px; }
 .registration-form h3 { font-size: 27px; letter-spacing: -.06em; margin: 27px 0 8px; }
 .registration-form > p:not(.form-microcopy) { color: var(--muted-text); font-size: 13px; margin-bottom: 26px; }
@@ -252,6 +251,7 @@
 .registration-form input::placeholder { color: #7f9088; }
 .registration-form input:focus { border-color: var(--gold); background: rgba(248,246,239,.1); }
 .form-microcopy { font-size: 10px; color: #92a098; line-height: 1.55; margin-top: 15px; }
+.form-microcopy--error { color: #f0b2a9; }
 
 .final-cta-section { background: var(--ink); display: grid; grid-template-columns: 21% 1fr; gap: 20px; min-height: 560px; align-items: center; }
 .final-number { color: var(--gold); font-family: "Libre Baskerville",serif; font-size: clamp(5rem,12vw,11rem); letter-spacing: -.15em; line-height: .7; }

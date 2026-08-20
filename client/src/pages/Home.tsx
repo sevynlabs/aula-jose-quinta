@@ -2,7 +2,7 @@
  * Direção Caderno de Viabilidade: editorialismo arquitetônico, espinha vertical e ouro de implantação.
  * Cada seção traduz a passagem de executor de obras para estruturador de negócios imobiliários.
  */
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -121,8 +121,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const leadSubmissionStarted = useRef(false);
-  const checkoutStarted = useRef(false);
+  const [captureError, setCaptureError] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -135,55 +134,45 @@ export default function Home() {
     setMenuOpen(false);
   };
 
-  const redirectToCheckout = () => {
-    if (checkoutStarted.current) return;
-    checkoutStarted.current = true;
-    window.location.assign(checkoutUrl);
-  };
-
-  const handleLeadCaptureLoad = () => {
-    if (leadSubmissionStarted.current) redirectToCheckout();
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmitting) return;
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
+    const formData = new FormData(event.currentTarget);
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
 
     setIsSubmitting(true);
+    setCaptureError(false);
     trackEvent("lead", { form_name: "inscricao_aula" });
     trackEvent("complete_registration", { form_name: "inscricao_aula" });
 
-    const additionalFields = {
+    const payload = {
       nome: name,
+      email,
       whatsapp: phone,
-      telefone: phone,
-      source: "landing_escola_incorporadores",
-      origem: "landing_escola_incorporadores",
-      timestamp: new Date().toISOString(),
+      perfil: "Inscrição na Aula de Incorporadores",
+      diagnostico: "Não informado no formulário",
+      respostas: [],
+      concluido: "Checkout iniciado",
     };
 
-    Object.entries(additionalFields).forEach(([fieldName, value]) => {
-      let input = form.querySelector<HTMLInputElement>(`input[type="hidden"][name="${fieldName}"]`);
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = fieldName;
-        form.appendChild(input);
-      }
-      input.value = value;
-    });
-
-    leadSubmissionStarted.current = true;
-    trackEvent("lead_capture_submitted", { form_name: "inscricao_aula" });
-    form.submit();
-
-    window.setTimeout(redirectToCheckout, 5000);
+    try {
+      await fetch(leadCaptureUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+      trackEvent("lead_capture_sent", { form_name: "inscricao_aula" });
+      window.location.assign(checkoutUrl);
+    } catch {
+      trackEvent("lead_capture_error", { form_name: "inscricao_aula" });
+      setCaptureError(true);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -350,7 +339,7 @@ export default function Home() {
               <div><span>INVESTIMENTO</span><strong>Condições de participação apresentadas no próximo passo</strong></div>
             </div>
           </div>
-          <form className="registration-form" action={leadCaptureUrl} method="post" encType="application/x-www-form-urlencoded" target="lead-capture-frame" onSubmit={handleSubmit}>
+          <form className="registration-form" onSubmit={handleSubmit}>
             <div className="form-topline"><span>PROTOCOLO DE INSCRIÇÃO</span><span>EI / 01</span></div>
             <h3>Ficha de participação.</h3>
             <p>Informe somente o necessário. Em seguida, você será direcionado ao checkout para concluir a participação.</p>
@@ -359,8 +348,8 @@ export default function Home() {
             <label>WhatsApp<input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" required /></label>
             <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? "Direcionando ao checkout..." : "Garantir minha participação"} <ArrowDownRight size={19} /></button>
             <p className="form-microcopy">Ao avançar, registramos sua inscrição e direcionamos você ao checkout seguro da Hotmart.</p>
+            {captureError && <p className="form-microcopy form-microcopy--error">Não foi possível registrar sua inscrição neste momento. Tente novamente.</p>}
           </form>
-          <iframe title="Registro de inscrição" name="lead-capture-frame" className="lead-capture-frame" onLoad={handleLeadCaptureLoad} aria-hidden="true" />
         </section>
 
         <section className="section final-cta-section">

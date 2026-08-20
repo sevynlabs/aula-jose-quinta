@@ -22,5 +22,6 @@
 - [ ] Investigar o erro recorrente do Vercel e revisar sua configuração no painel.
 - [x] Corrigir o envio do formulário à planilha antes do redirecionamento ao checkout Hotmart.
 - [x] Inspecionar a estrutura disponível e corrigir o formato de envio para que o lead seja gravado.
+- [x] Enviar o payload JSON com os campos exatos esperados pelo Apps Script.
 - [x] Criar commit e enviar as alterações atuais ao repositório conectado.
 - [x] Substituir a marca atual pela logo anexada e ajustar o tamanho responsivo.
