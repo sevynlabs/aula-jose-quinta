@@ -7,3 +7,4 @@
 - [x] Validar em desktop e mobile, ajustar o que elevar a qualidade percebida e salvar uma nova versão.
 - [x] Remover o fundo visível do retrato de José e reintegrar a imagem em uma hero escura coerente.
 - [x] Ajustar posição, escala e sobreposição do retrato de José para a hero mobile.
+- [x] Reposicionar o rosto de José no mobile para fora da zona ocupada pela headline e pela CTA.
