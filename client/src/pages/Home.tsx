@@ -3,7 +3,6 @@
  * Cada seção traduz a passagem de executor de obras para estruturador de negócios imobiliários.
  */
 import { FormEvent, useEffect, useState } from "react";
-import { useLocation } from "wouter";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -41,6 +40,8 @@ const joseHeroUrl = storageAsset("jose-hero-escura_94e894d4.png");
 const joseMobileHeroUrl = storageAsset("jose-hero-mobile-central_33934ce1.png");
 const facadeImageUrl = storageAsset("fachada-contemporanea_85ebbcb5.jpg");
 const planImageUrl = storageAsset("planta-viabilidade_a8868ecd.jpg");
+const checkoutUrl = "https://pay.hotmart.com/U107160255C";
+const leadCaptureUrl = "https://script.google.com/macros/s/AKfycbzcuoH2Sz-TosHnGRNUPAmyqeevEfBBpIKUIdZw6obzZVln6I0z5hTXS0Nc7yaq6toCSA/exec";
 
 const navItems = [
   ["01", "Diagnóstico", "#diagnostico"],
@@ -117,9 +118,9 @@ function CycleStep({ number, children }: { number: string; children: React.React
 }
 
 export default function Home() {
-  const [, navigate] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -132,11 +133,41 @@ export default function Home() {
     setMenuOpen(false);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "").trim();
+
+    setIsSubmitting(true);
     trackEvent("lead", { form_name: "inscricao_aula" });
     trackEvent("complete_registration", { form_name: "inscricao_aula" });
-    navigate("/obrigado");
+
+    try {
+      const captureUrl = new URL(leadCaptureUrl);
+      captureUrl.searchParams.set("name", name);
+      captureUrl.searchParams.set("nome", name);
+      captureUrl.searchParams.set("email", email);
+      captureUrl.searchParams.set("phone", phone);
+      captureUrl.searchParams.set("whatsapp", phone);
+      captureUrl.searchParams.set("source", "landing_escola_incorporadores");
+      captureUrl.searchParams.set("timestamp", new Date().toISOString());
+
+      await fetch(captureUrl.toString(), {
+        method: "GET",
+        mode: "no-cors",
+        cache: "no-store",
+        keepalive: true,
+      });
+      trackEvent("lead_capture_sent", { form_name: "inscricao_aula" });
+    } catch {
+      trackEvent("lead_capture_error", { form_name: "inscricao_aula" });
+    } finally {
+      window.location.assign(checkoutUrl);
+    }
   };
 
   return (
@@ -298,18 +329,20 @@ export default function Home() {
               <div><span>DATA</span><strong>Quinta-feira</strong></div>
               <div><span>HORÁRIO</span><strong>Informado na confirmação da inscrição</strong></div>
               <div><span>FORMATO</span><strong>Online</strong></div>
+              <div><span>BÔNUS</span><strong>Aula gravada para quem adquirir a participação</strong></div>
+              <div><span>DIAGNÓSTICO</span><strong>Leitura do momento atual para orientar o próximo nível</strong></div>
               <div><span>INVESTIMENTO</span><strong>Condições de participação apresentadas no próximo passo</strong></div>
             </div>
           </div>
           <form className="registration-form" onSubmit={handleSubmit}>
             <div className="form-topline"><span>PROTOCOLO DE INSCRIÇÃO</span><span>EI / 01</span></div>
             <h3>Ficha de participação.</h3>
-            <p>Informe somente o necessário para seguir à confirmação.</p>
+            <p>Informe somente o necessário. Em seguida, você será direcionado ao checkout para concluir a participação.</p>
             <label>Nome completo<input name="name" autoComplete="name" placeholder="Como podemos chamar você?" required /></label>
             <label>E-mail profissional<input name="email" type="email" autoComplete="email" placeholder="voce@empresa.com.br" required /></label>
             <label>WhatsApp<input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" required /></label>
-            <button type="submit" className="button button--gold button--full">Garantir minha participação <ArrowDownRight size={19} /></button>
-            <p className="form-microcopy">Ao avançar, você segue para as instruções de confirmação e acesso.</p>
+            <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? "Direcionando ao checkout..." : "Garantir minha participação"} <ArrowDownRight size={19} /></button>
+            <p className="form-microcopy">Ao avançar, registramos sua inscrição e direcionamos você ao checkout seguro da Hotmart.</p>
           </form>
         </section>
 
