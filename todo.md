@@ -12,3 +12,10 @@
 - [x] Centralizar o rosto de José no eixo horizontal da hero mobile.
 - [x] Garantir margem superior suficiente para a cabeça de José não ser cortada no mobile.
 - [x] Descer o bloco completo de texto e ampliar discretamente a foto na hero mobile.
+- [x] Extrair pontos concretos da apresentação e comparar com a copy atual da landing page.
+- [ ] Submeter recomendações de conteúdo para aprovação antes de alterar a página.
+- [ ] Validar o checkout Hotmart e o endpoint de cadastro fornecidos.
+- [ ] Incluir aula gravada e diagnóstico de momento como benefícios da oferta.
+- [ ] Direcionar CTAs e formulário ao checkout, registrando o lead no endpoint de Google Sheets.
+- [ ] Preparar a configuração de implantação e publicar a landing page no Vercel.
+- [x] Substituir a marca atual pela logo anexada e ajustar o tamanho responsivo.

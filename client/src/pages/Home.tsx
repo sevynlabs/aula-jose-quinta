@@ -30,7 +30,7 @@ declare global {
   }
 }
 
-const logoUrl = "/manus-storage/marca-escola-incorporadores_b457d9df.png";
+const logoUrl = "/manus-storage/escola-incorporadores-logo_79ad98da.png";
 const josePhotoUrl = "/manus-storage/jose-carlos-cardoso_c9c3a2cf.jpg";
 const joseHeroUrl = "/manus-storage/jose-hero-escura_94e894d4.png";
 const joseMobileHeroUrl = "/manus-storage/jose-hero-mobile-central_33934ce1.png";
@@ -102,8 +102,7 @@ function trackEvent(event: string, params: Record<string, string> = {}) {
 function BrandLockup({ compact = false }: { compact?: boolean }) {
   return (
     <a href="#topo" className={`brand-lockup ${compact ? "brand-lockup--compact" : ""}`} aria-label="Escola de Incorporadores, início">
-      <img src={logoUrl} alt="" />
-      <span className="brand-wordmark"><b>Escola</b><em>de Incorporadores</em></span>
+      <img src={logoUrl} alt="Escola de Incorporadores" />
     </a>
   );
 }

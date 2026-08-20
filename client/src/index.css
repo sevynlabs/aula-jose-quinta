@@ -84,12 +84,10 @@
 .site-header { position: fixed; inset: 0 0 auto; z-index: 20; transition: background .2s var(--ease-out), border .2s var(--ease-out); padding-left: 64px; }
 .site-header--scrolled { background: rgba(6,23,25,.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line-light); }
 .header-inner { height: 76px; max-width: 1320px; margin: auto; padding: 0 48px; display: flex; align-items: center; gap: 36px; }
-.brand-lockup { display: inline-flex; align-items: center; gap: 9px; color: inherit; min-width: max-content; }
-.brand-lockup:before { content: ""; width: 3px; height: 34px; background: var(--gold); display: block; }
-.brand-lockup img { width: 35px; height: 35px; object-fit: contain; }
-.brand-lockup .brand-wordmark { display: grid; line-height: .9; font-size: 12px; letter-spacing: -.035em; }
-.brand-lockup b { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
-.brand-lockup em { font-family: "Libre Baskerville", serif; font-size: 10px; font-style: italic; color: var(--gold-light); margin-top: 3px; }
+.brand-lockup { display: inline-flex; align-items: center; color: inherit; min-width: max-content; }
+.brand-lockup:before { display: none; }
+.brand-lockup img { width: 172px; height: auto; max-height: 52px; object-fit: contain; object-position: left center; }
+.brand-lockup--compact img { width: 154px; max-height: 46px; }
 .desktop-nav { display: flex; gap: 26px; margin-left: auto; }
 .desktop-nav a { color: var(--text); font-size: 11px; letter-spacing: .025em; opacity: .76; transition: opacity .18s; }
 .desktop-nav a:hover { opacity: 1; }
@@ -304,6 +302,7 @@
 @media (max-width: 860px) {
   .site-header { padding-left: 0; }
   .header-inner { height: 67px; padding: 0 18px; }
+  .brand-lockup img, .brand-lockup--compact img { width: 158px; max-height: 48px; }
   .desktop-nav, .header-cta, .folio-rail { display: none; }
   .mobile-menu-trigger { margin-left: auto; display: grid; place-items: center; background: transparent; color: #fff; border: 0; padding: 9px; }
   .mobile-nav { display: grid; position: absolute; top: 67px; left: 0; right: 0; background: var(--ink); border-top: 1px solid var(--line-light); border-bottom: 1px solid var(--line-light); padding: 12px 18px 18px; }
