@@ -243,6 +243,7 @@
 .event-details span { font-size: 9px; letter-spacing: .12em; font-weight: 700; color: #6e7972; padding-top: 3px; }
 .event-details strong { font-size: 12px; line-height: 1.4; }
 .registration-form { background: radial-gradient(circle at 100% 0,rgba(196,162,106,.13),transparent 34%),var(--ink); color: var(--text); padding: 28px; border: 1px solid rgba(196,162,106,.42); box-shadow: 15px 15px 0 rgba(196,162,106,.22), 0 26px 60px rgba(6,23,25,.2); }
+.lead-capture-frame { display: none; }
 .form-topline { display: flex; justify-content: space-between; color: var(--gold-light); font-size: 9px; font-weight: 700; letter-spacing: .12em; border-bottom: 1px solid var(--line-light); padding-bottom: 16px; }
 .registration-form h3 { font-size: 27px; letter-spacing: -.06em; margin: 27px 0 8px; }
 .registration-form > p:not(.form-microcopy) { color: var(--muted-text); font-size: 13px; margin-bottom: 26px; }
