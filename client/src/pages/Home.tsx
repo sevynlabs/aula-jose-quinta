@@ -217,7 +217,7 @@ export default function Home() {
             <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> ESCOLA DE INCORPORADORES</span>
             <h1>Você sabe construir.<br /><span>Mas seu modelo de negócio ainda te prende a uma obra por vez?</span></h1>
             <p className="hero-lead">Na próxima quinta-feira, José Carlos Cardoso vai mostrar por que alguns construtores continuam dependendo do próprio capital e de uma operação por vez — e o que muda quando começam a pensar como incorporadores.</p>
-            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>HORÁRIO NA CONFIRMAÇÃO</span><i /><span>ONLINE</span></div>
+            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE</span></div>
             <div className="hero-actions">
               <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero participar da aula <ArrowDownRight size={19} /></a>
               <a href="#diagnostico" className="quiet-link">Entender a diferença <MoveRight size={17} /></a>
@@ -332,7 +332,7 @@ export default function Home() {
               <div><span>AULA</span><strong>Como parar de construir uma obra por vez e começar a lucrar de verdade</strong></div>
               <div><span>COM</span><strong>José Carlos Cardoso</strong></div>
               <div><span>DATA</span><strong>Quinta-feira</strong></div>
-              <div><span>HORÁRIO</span><strong>Informado na confirmação da inscrição</strong></div>
+              <div><span>HORÁRIO</span><strong>20:00h</strong></div>
               <div><span>FORMATO</span><strong>Online</strong></div>
               <div><span>BÔNUS</span><strong>Aula gravada para quem adquirir a participação</strong></div>
               <div><span>DIAGNÓSTICO</span><strong>Leitura do momento atual para orientar o próximo nível</strong></div>
