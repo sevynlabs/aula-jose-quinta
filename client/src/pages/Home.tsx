@@ -7,16 +7,11 @@ import {
   ArrowDownRight,
   ArrowRight,
   ChevronDown,
-  CircleCheck,
   MapPin,
   Menu,
   MoveRight,
   Play,
   X,
-  Users,
-  Quote,
-  TrendingUp,
-  AlertCircle,
 } from "lucide-react";
 import {
   Accordion,
@@ -37,19 +32,18 @@ const storageOrigin = typeof window !== "undefined" && window.location.hostname.
   : "https://escolaland-rgqhosht.manus.space";
 const storageAsset = (filename: string) => `${storageOrigin}/manus-storage/${filename}`;
 
-const logoUrl = storageAsset("escola-incorporadores-logo_79ad98da.png");
-const josePhotoUrl = storageAsset("jose-carlos-cardoso_c9c3a2cf.jpg");
-const joseHeroUrl = storageAsset("jose-hero-escura_94e894d4.png");
-const joseMobileHeroUrl = storageAsset("jose-hero-mobile-central_33934ce1.png");
-const facadeImageUrl = storageAsset("fachada-contemporanea_85ebbcb5.jpg");
+const logoUrl = "/logo-light-jose.png";
+const josePhotoUrl = "/jose-carlos.jpg";
+const joseHeroUrl = "/jose-hero.png";
+const joseMobileHeroUrl = "/jose-hero.png";
 const planImageUrl = storageAsset("planta-viabilidade_a8868ecd.jpg");
 const checkoutUrl = "https://pay.hotmart.com/U107160255C";
-const leadCaptureUrl = "https://script.google.com/macros/s/AKfycbzcuoH2Sz-TosHnGRNUPAmyqeevEfBBpIKUIdZw6obzZVln6I0z5hTXS0Nc7yaq6toCSA/exec";
+const leadCaptureUrl = "https://script.google.com/macros/s/AKfycbyKJ4ftf1VbPkI0Y7KovtqVYypBQgaThQiYydTBRmY7BaVrQsluGLvG6X23U1RO2elj/exec";
 
 const navItems = [
   ["01", "O Problema", "#diagnostico"],
-  ["02", "A Virada", "#diferenca"],
-  ["03", "A Aula", "#aula"],
+  ["02", "A Aula", "#aula"],
+  ["03", "Quem Ensina", "#autoridade"],
   ["04", "Inscrição", "#inscricao"],
 ];
 
@@ -61,43 +55,6 @@ const learnings = [
   "O mapa completo da incorporação: da análise de mercado até a saída — cada peça no lugar certo.",
   "O que fazer na segunda-feira seguinte para começar a transição de construtor para incorporador.",
 ];
-
-const diagnosis = [
-  "Já entregou obras, mas ainda depende 100% do seu próprio capital.",
-  "Precisa vender um imóvel para ter dinheiro e começar o próximo.",
-  "Trabalha mais que qualquer funcionário e o lucro não reflete o esforço.",
-  "Sente que está sempre correndo atrás — nunca à frente do mercado.",
-  "Sabe construir com qualidade, mas não sabe estruturar um negócio escalável.",
-  "Olha para incorporadoras grandes e pensa: 'como eles conseguem fazer várias ao mesmo tempo?'",
-  "Está cansado de depender de sorte, timing e do próprio bolso para crescer.",
-];
-
-const testimonials = [
-  {
-    name: "Ricardo M.",
-    role: "Construtor há 12 anos",
-    text: "Eu achava que precisava de mais dinheiro pra crescer. Depois dessa aula, entendi que precisava de estrutura. Hoje tenho 3 operações rodando ao mesmo tempo.",
-  },
-  {
-    name: "Fernanda L.",
-    role: "Engenheira Civil",
-    text: "Parei de colocar meu dinheiro em risco. Aprendi a montar operações onde o investidor entra com o capital e eu entro com a expertise.",
-  },
-  {
-    name: "Carlos A.",
-    role: "Ex-construtor, hoje incorporador",
-    text: "Em 18 meses saí de uma obra por vez para 4 projetos simultâneos. A virada foi entender o modelo que o José ensina.",
-  },
-];
-
-const metrics = [
-  { number: "2.847", label: "construtores já assistiram" },
-  { number: "R$ 47M", label: "em operações estruturadas pelos alunos" },
-  { number: "94%", label: "recomendam a aula" },
-];
-
-const TOTAL_VAGAS = 150;
-const VAGAS_RESTANTES = 23;
 
 const faqs = [
   {
@@ -152,11 +109,32 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captureError, setCaptureError] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<"gratuito" | "gravacao">("gratuito");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll reveal animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal-on-scroll");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollAndTrack = (location: string) => {
@@ -182,22 +160,55 @@ export default function Home() {
       nome: name,
       email,
       whatsapp: phone,
-      perfil: "Inscrição na Aula de Incorporadores",
-      diagnostico: "Não informado no formulário",
-      respostas: [],
-      concluido: "Checkout iniciado",
+      perfil: "Aula Executiva R$27",
+      origem: "Landing Page",
     };
 
     try {
-      await fetch(leadCaptureUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload),
-        keepalive: true,
+      // Cria iframe oculto para envio
+      const iframe = document.createElement("iframe");
+      iframe.name = "hidden_iframe";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+
+      // Cria form oculto
+      const hiddenForm = document.createElement("form");
+      hiddenForm.method = "POST";
+      hiddenForm.action = leadCaptureUrl;
+      hiddenForm.target = "hidden_iframe";
+
+      const perfil = selectedPlan === "gratuito" ? "Aula Ao Vivo (Gratuito)" : "Aula Gravada (R$27)";
+      const redirectUrl = selectedPlan === "gratuito"
+        ? "https://aula1.escoladeincorporadores.com.br/obrigado"
+        : checkoutUrl;
+
+      const fields = {
+        nome: name,
+        email: email,
+        whatsapp: phone,
+        perfil: perfil,
+        origem: "Landing Page",
+      };
+
+      Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        hiddenForm.appendChild(input);
       });
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+
       trackEvent("lead_capture_sent", { form_name: "inscricao_aula" });
-      window.location.assign(checkoutUrl);
+
+      // Aguarda envio e redireciona
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        document.body.removeChild(hiddenForm);
+        window.location.assign(redirectUrl);
+      }, 1000);
     } catch {
       trackEvent("lead_capture_error", { form_name: "inscricao_aula" });
       setCaptureError(true);
@@ -247,12 +258,11 @@ export default function Home() {
             <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> AO VIVO E ONLINE</span>
             <h1>Você constrói bem.<br /><span>Mas continua refém do próprio capital?</span></h1>
             <p className="hero-lead">Na quinta-feira, vou mostrar como construtores estão saindo do ciclo de "uma obra por vez" e montando operações de incorporação — usando dinheiro de terceiros, com estrutura profissional e lucro de verdade.</p>
-            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE E GRATUITO</span></div>
+            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE • GRATUITO</span></div>
             <div className="hero-actions">
               <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero sair desse ciclo <ArrowDownRight size={19} /></a>
               <a href="#diagnostico" className="quiet-link">Ver se é pra mim <MoveRight size={17} /></a>
             </div>
-            <div className="urgency-bar"><AlertCircle size={14} /><span>Restam apenas <strong>{VAGAS_RESTANTES} vagas</strong> de {TOTAL_VAGAS}</span></div>
           </div>
           <div className="hero-page-number"><span>01</span><small>/ 08</small></div>
         </section>
@@ -268,7 +278,7 @@ export default function Home() {
               <p>Todo mês você vê o mesmo filme: acha um terreno, coloca SEU dinheiro, constrói, torce pra vender rápido — e só aí respira pra começar de novo.</p>
               <p className="cycle-statement">Enquanto isso, incorporadores que construem pior que você estão faturando 10x mais. A diferença não é talento. É estrutura.</p>
             </div>
-            <div className="cycle-diagram" aria-label="Ciclo da obra única">
+            <div className="cycle-diagram reveal-on-scroll" aria-label="Ciclo da obra única">
               <div className="diagram-label"><span>O CICLO QUE TE PRENDE</span><strong>A roda que nunca para</strong></div>
               <div className="cycle-track">
                 <CycleStep number="01">Acha terreno</CycleStep><ArrowDownRight />
@@ -282,59 +292,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="diferenca" className="section section--ink difference-section">
-          <div className="section-index section-index--light"><span>02</span><div /><small>A VIRADA</small></div>
-          <div className="difference-head split-heading">
-            <span className="section-kicker section-kicker--light">A diferença que ninguém te explicou</span>
-            <h2>Construtor troca tempo por dinheiro.<br /><em>Incorporador multiplica dinheiro com estrutura.</em></h2>
-          </div>
-          <div className="comparison">
-            <article className="comparison-column comparison-column--builder">
-              <header><span>01</span><h3>Construtor</h3></header>
-              <p>Executa a obra. Depende do próprio capital.</p>
-              <ul><li>Usa dinheiro próprio</li><li>Uma obra por vez</li><li>Lucro limitado ao esforço</li><li>Refém da venda</li></ul>
-            </article>
-            <article className="comparison-column comparison-column--developer">
-              <header><span>02</span><h3>Incorporador</h3></header>
-              <p>Estrutura a operação. Usa capital de terceiros.</p>
-              <ul><li>Atrai investidores</li><li>Múltiplas operações simultâneas</li><li>Lucro escalável</li><li>Controla o risco</li><li>Negócio que funciona sem ele</li></ul>
-            </article>
-          </div>
-          <blockquote>A mesma obra, o mesmo terreno, o mesmo mercado — resultados completamente diferentes. A diferença está no modelo, não no tijolo.</blockquote>
-        </section>
-
         <section id="aula" className="section section--offwhite class-section">
           <div className="class-photo"><img src={planImageUrl} alt="Materiais de estudo de viabilidade imobiliária" /><div className="photo-folio">AULA<br />EXECUTIVA</div></div>
           <div className="class-copy">
-            <div className="section-index"><span>03</span><div /><small>O QUE VOCÊ VAI APRENDER</small></div>
+            <div className="section-index"><span>02</span><div /><small>O QUE VOCÊ VAI APRENDER</small></div>
             <h2>Em 2 horas, você vai entender o que levei anos <em>para descobrir.</em></h2>
-            <ol className="learning-list">
+            <ol className="learning-list reveal-on-scroll">
               {learnings.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}
             </ol>
             <a href="#inscricao" className="button button--ink" onClick={() => scrollAndTrack("aprendizados")}>Quero aprender isso <ArrowDownRight size={19} /></a>
           </div>
         </section>
 
-        <section className="section diagnosis-list-section">
-          <div className="diagnosis-list-copy">
-            <span className="section-kicker section-kicker--light">Checklist rápido</span>
-            <h2>Essa aula é pra você se...</h2>
-            <p>Não é pra curiosos. É pra quem já está no jogo e quer jogar diferente.</p>
-          </div>
-          <div className="diagnosis-checklist">
-            {diagnosis.map((item, index) => <div className="diagnosis-item" key={item}><span>0{index + 1}</span><CircleCheck size={19} /><p>{item}</p></div>)}
-          </div>
-          <div className="diagnosis-footer"><strong>Marcou 3 ou mais? Então você está exatamente onde eu estava antes de fazer a virada. A aula foi feita pra esse momento.</strong><a href="#inscricao" className="text-link text-link--gold" onClick={() => scrollAndTrack("diagnostico_lista")}>Garantir minha vaga <ArrowRight size={17} /></a></div>
-        </section>
-
-        <section className="section authority-section section--paper">
-          <div className="authority-photo-placeholder">
+        <section id="autoridade" className="section authority-section section--paper">
+          <div className="authority-photo-placeholder reveal-on-scroll">
             <img src={josePhotoUrl} alt="José Carlos Cardoso, empresário e incorporador" />
             <div className="authority-photo-shade" />
             <div className="authority-photo-caption"><span>JCC / 01</span><strong>Do canteiro de obras<br />para a sala de operações.</strong></div>
           </div>
           <div className="authority-copy">
-            <div className="section-index"><span>04</span><div /><small>QUEM VAI TE ENSINAR</small></div>
+            <div className="section-index"><span>03</span><div /><small>QUEM VAI TE ENSINAR</small></div>
             <h2>José Carlos<br /><em>Cardoso</em></h2>
             <p className="role">Incorporador, empresário e fundador da Escola de Incorporadores.</p>
             <p>Comecei como você: botando meu dinheiro, fazendo uma obra por vez, torcendo pra vender. Até entender que o problema não era o mercado — era o modelo.</p>
@@ -343,29 +320,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section social-proof-section">
-          <div className="metrics-bar">
-            {metrics.map((m) => <div key={m.label} className="metric-item"><span className="metric-number">{m.number}</span><span className="metric-label">{m.label}</span></div>)}
-          </div>
-          <div className="testimonials-grid">
-            {testimonials.map((t) => <blockquote key={t.name} className="testimonial-card"><Quote size={20} /><p>{t.text}</p><footer><strong>{t.name}</strong><span>{t.role}</span></footer></blockquote>)}
-          </div>
-        </section>
-
-        <section className="section cost-section">
-          <img className="cost-image" src={facadeImageUrl} alt="Fachada de empreendimento contemporâneo" />
-          <div className="cost-overlay" />
-          <div className="cost-content">
-            <span className="section-kicker section-kicker--light">O custo de continuar igual</span>
-            <h2>Cada obra que você faz no modelo antigo<br /><em>é dinheiro que você deixa na mesa.</em></h2>
-            <div className="cost-list"><span>Mais capital travado.</span><span>Mais noites sem dormir.</span><span>Mais anos no mesmo lugar.</span></div>
-            <p>A pergunta não é se você pode fazer diferente. É quanto tempo mais você vai esperar.</p>
-          </div>
-        </section>
-
         <section id="inscricao" className="section registration-section section--offwhite">
           <div className="registration-intro">
-            <div className="section-index"><span>05</span><div /><small>INSCRIÇÃO</small></div>
+            <div className="section-index"><span>04</span><div /><small>INSCRIÇÃO</small></div>
             <h2>Quinta-feira, 20h.<br /><em>Sua chance de mudar o jogo.</em></h2>
             <p>Uma aula ao vivo, sem enrolação, direto ao ponto. Pra quem está pronto para parar de construir como pedreiro e começar a operar como empresário.</p>
             <div className="event-details">
@@ -376,30 +333,46 @@ export default function Home() {
               <div><span>FORMATO</span><strong>Ao vivo, online, com chat aberto</strong></div>
               <div><span>BÔNUS</span><strong>Gravação disponível por 48h</strong></div>
               <div><span>MATERIAL</span><strong>PDF com o mapa da incorporação</strong></div>
-              <div><span>INVESTIMENTO</span><strong>Gratuito (vagas limitadas)</strong></div>
+              <div><span>INVESTIMENTO</span><strong>Gratuito ou R$ 27 (com gravação)</strong></div>
             </div>
           </div>
-          <form className="registration-form" onSubmit={handleSubmit}>
+          <form className="registration-form reveal-on-scroll" onSubmit={handleSubmit}>
             <div className="form-topline"><span>GARANTA SUA VAGA</span><span>EI / 01</span></div>
-            <h3>Inscrição gratuita.</h3>
-            <p>Preencha abaixo e receba o link de acesso no seu WhatsApp e email.</p>
+            <h3>Escolha seu plano</h3>
+
+            <div className="plan-options">
+              <label className={`plan-option ${selectedPlan === "gratuito" ? "plan-option--selected" : ""}`}>
+                <input type="radio" name="plan" value="gratuito" checked={selectedPlan === "gratuito"} onChange={() => setSelectedPlan("gratuito")} />
+                <div className="plan-content">
+                  <strong>Aula ao Vivo</strong>
+                  <span className="plan-price">Gratuito</span>
+                  <span className="plan-desc">Acesso à aula ao vivo na quinta-feira</span>
+                </div>
+              </label>
+              <label className={`plan-option ${selectedPlan === "gravacao" ? "plan-option--selected" : ""}`}>
+                <input type="radio" name="plan" value="gravacao" checked={selectedPlan === "gravacao"} onChange={() => setSelectedPlan("gravacao")} />
+                <div className="plan-content">
+                  <strong>Aula ao Vivo + Gravação</strong>
+                  <span className="plan-price">R$ 27</span>
+                  <span className="plan-desc">Acesso à aula ao vivo + gravação permanente</span>
+                </div>
+              </label>
+            </div>
+
             <label>Seu nome<input name="name" autoComplete="name" placeholder="Como quer ser chamado?" required /></label>
             <label>Seu melhor email<input name="email" type="email" autoComplete="email" placeholder="email@exemplo.com" required /></label>
             <label>WhatsApp (com DDD)<input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" required /></label>
-            <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? "Confirmando vaga..." : "Quero minha vaga gratuita"} <ArrowDownRight size={19} /></button>
+            <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>
+              {isSubmitting ? "Redirecionando..." : selectedPlan === "gratuito" ? "Garantir minha vaga gratuita" : "Garantir vaga + gravação por R$ 27"} <ArrowDownRight size={19} />
+            </button>
             <p className="form-microcopy">Ao se inscrever, você concorda em receber comunicações sobre a aula. Pode sair quando quiser.</p>
             {captureError && <p className="form-microcopy form-microcopy--error">Erro ao confirmar. Tente novamente ou entre em contato.</p>}
           </form>
         </section>
 
-        <section className="section final-cta-section">
-          <span className="final-number">06</span>
-          <div><p>Você pode continuar construindo uma obra por vez.</p><h2>Ou pode aprender a construir <em>uma incorporadora.</em></h2><p className="final-subtitle">Quinta-feira, 20h. Online. Gratuito. A decisão é sua.</p><a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("cta_final")}>Garantir minha vaga agora <ArrowDownRight size={19} /></a></div>
-        </section>
-
         <section className="section faq-section">
           <div className="faq-intro"><span className="section-kicker">Perguntas frequentes</span><h2>Antes de decidir.</h2><p>Respostas diretas para dúvidas comuns.</p></div>
-          <Accordion type="single" collapsible className="faq-list">
+          <Accordion type="single" collapsible className="faq-list reveal-on-scroll">
             {faqs.map((faq, index) => <AccordionItem value={`item-${index}`} key={faq.question}><AccordionTrigger><span>0{index + 1}</span>{faq.question}<ChevronDown /></AccordionTrigger><AccordionContent>{faq.answer}</AccordionContent></AccordionItem>)}
           </Accordion>
         </section>
