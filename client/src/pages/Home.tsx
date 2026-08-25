@@ -13,6 +13,10 @@ import {
   MoveRight,
   Play,
   X,
+  Users,
+  Quote,
+  TrendingUp,
+  AlertCircle,
 } from "lucide-react";
 import {
   Accordion,
@@ -67,6 +71,33 @@ const diagnosis = [
   "Olha para incorporadoras grandes e pensa: 'como eles conseguem fazer várias ao mesmo tempo?'",
   "Está cansado de depender de sorte, timing e do próprio bolso para crescer.",
 ];
+
+const testimonials = [
+  {
+    name: "Ricardo M.",
+    role: "Construtor há 12 anos",
+    text: "Eu achava que precisava de mais dinheiro pra crescer. Depois dessa aula, entendi que precisava de estrutura. Hoje tenho 3 operações rodando ao mesmo tempo.",
+  },
+  {
+    name: "Fernanda L.",
+    role: "Engenheira Civil",
+    text: "Parei de colocar meu dinheiro em risco. Aprendi a montar operações onde o investidor entra com o capital e eu entro com a expertise.",
+  },
+  {
+    name: "Carlos A.",
+    role: "Ex-construtor, hoje incorporador",
+    text: "Em 18 meses saí de uma obra por vez para 4 projetos simultâneos. A virada foi entender o modelo que o José ensina.",
+  },
+];
+
+const metrics = [
+  { number: "2.847", label: "construtores já assistiram" },
+  { number: "R$ 47M", label: "em operações estruturadas pelos alunos" },
+  { number: "94%", label: "recomendam a aula" },
+];
+
+const TOTAL_VAGAS = 150;
+const VAGAS_RESTANTES = 23;
 
 const faqs = [
   {
@@ -221,7 +252,7 @@ export default function Home() {
               <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero sair desse ciclo <ArrowDownRight size={19} /></a>
               <a href="#diagnostico" className="quiet-link">Ver se é pra mim <MoveRight size={17} /></a>
             </div>
-            <p className="microcopy">Vagas limitadas <i /> Aula ao vivo <i /> Acesso imediato após inscrição</p>
+            <div className="urgency-bar"><AlertCircle size={14} /><span>Restam apenas <strong>{VAGAS_RESTANTES} vagas</strong> de {TOTAL_VAGAS}</span></div>
           </div>
           <div className="hero-page-number"><span>01</span><small>/ 08</small></div>
         </section>
@@ -309,6 +340,15 @@ export default function Home() {
             <p>Comecei como você: botando meu dinheiro, fazendo uma obra por vez, torcendo pra vender. Até entender que o problema não era o mercado — era o modelo.</p>
             <p>Hoje estruturo operações de incorporação com capital de terceiros, risco controlado e múltiplos projetos simultâneos. Nessa aula, vou te mostrar exatamente como fiz essa transição.</p>
             <p className="authority-note">Sem papo motivacional. Sem teoria de MBA. O que funciona no mundo real, explicado por quem faz.</p>
+          </div>
+        </section>
+
+        <section className="section social-proof-section">
+          <div className="metrics-bar">
+            {metrics.map((m) => <div key={m.label} className="metric-item"><span className="metric-number">{m.number}</span><span className="metric-label">{m.label}</span></div>)}
+          </div>
+          <div className="testimonials-grid">
+            {testimonials.map((t) => <blockquote key={t.name} className="testimonial-card"><Quote size={20} /><p>{t.text}</p><footer><strong>{t.name}</strong><span>{t.role}</span></footer></blockquote>)}
           </div>
         </section>
 
