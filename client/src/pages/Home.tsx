@@ -1,12 +1,11 @@
 /**
- * Direção Caderno de Viabilidade: editorialismo arquitetônico, espinha vertical e ouro de implantação.
- * Cada seção traduz a passagem de executor de obras para estruturador de negócios imobiliários.
+ * Landing Page - Aula Executiva de Incorporação
+ * Copy reescrita com foco em conversão e persuasão
  */
 import { FormEvent, useEffect, useState } from "react";
 import {
   ArrowDownRight,
   ArrowRight,
-  Check,
   ChevronDown,
   CircleCheck,
   MapPin,
@@ -44,59 +43,59 @@ const checkoutUrl = "https://pay.hotmart.com/U107160255C";
 const leadCaptureUrl = "https://script.google.com/macros/s/AKfycbzcuoH2Sz-TosHnGRNUPAmyqeevEfBBpIKUIdZw6obzZVln6I0z5hTXS0Nc7yaq6toCSA/exec";
 
 const navItems = [
-  ["01", "Diagnóstico", "#diagnostico"],
-  ["02", "A diferença", "#diferenca"],
-  ["03", "A aula", "#aula"],
-  ["04", "Participar", "#inscricao"],
+  ["01", "O Problema", "#diagnostico"],
+  ["02", "A Virada", "#diferenca"],
+  ["03", "A Aula", "#aula"],
+  ["04", "Inscrição", "#inscricao"],
 ];
 
 const learnings = [
-  "Por que bons construtores continuam presos ao ciclo de uma obra por vez.",
-  "A diferença entre construir um imóvel e estruturar uma operação imobiliária.",
-  "Como um incorporador analisa uma oportunidade antes de decidir construir.",
-  "As variáveis que precisam existir antes da obra: mercado, produto, viabilidade e estrutura.",
-  "Como terreno, parceiros, capital, operação e comercialização formam um único ecossistema.",
-  "Quais mudanças ajudam a transformar construção em um modelo de negócio.",
+  "A armadilha invisível que mantém 90% dos construtores reféns do próprio dinheiro — e como sair dela.",
+  "O raciocínio de 3 perguntas que todo incorporador faz ANTES de comprar um terreno (e que evita prejuízos de milhões).",
+  "Por que você não precisa de mais capital para crescer — precisa de uma estrutura diferente.",
+  "Como montar operações onde o risco é do investidor e o lucro é seu (sem perder o controle).",
+  "O mapa completo da incorporação: da análise de mercado até a saída — cada peça no lugar certo.",
+  "O que fazer na segunda-feira seguinte para começar a transição de construtor para incorporador.",
 ];
 
 const diagnosis = [
-  "Já construiu pelo menos um imóvel.",
-  "Está construindo atualmente.",
-  "Utiliza muito recurso próprio nas operações.",
-  "Sente que precisa vender uma obra para iniciar outra.",
-  "Quer profissionalizar sua atuação no mercado imobiliário.",
-  "Quer entender incorporação além da execução da obra.",
-  "Possui capacidade de construir, mas percebe que ainda falta estrutura empresarial.",
+  "Já entregou obras, mas ainda depende 100% do seu próprio capital.",
+  "Precisa vender um imóvel para ter dinheiro e começar o próximo.",
+  "Trabalha mais que qualquer funcionário e o lucro não reflete o esforço.",
+  "Sente que está sempre correndo atrás — nunca à frente do mercado.",
+  "Sabe construir com qualidade, mas não sabe estruturar um negócio escalável.",
+  "Olha para incorporadoras grandes e pensa: 'como eles conseguem fazer várias ao mesmo tempo?'",
+  "Está cansado de depender de sorte, timing e do próprio bolso para crescer.",
 ];
 
 const faqs = [
   {
-    question: "Essa aula é para quem nunca construiu?",
-    answer: "A aula foi pensada principalmente para construtores, empresários da construção e profissionais próximos ao mercado imobiliário que querem entender a incorporação além da obra.",
+    question: "Preciso já ter construído para participar?",
+    answer: "Sim. A aula é para quem já sabe construir e quer dar o próximo passo. Se você nunca executou uma obra, ainda não é o momento.",
   },
   {
-    question: "Já sou construtor. A aula é básica?",
-    answer: "O ponto de partida não é ensinar o básico da obra. A aula discute a diferença entre executar uma construção e estruturar uma operação de incorporação.",
+    question: "Vou aprender a captar investidores?",
+    answer: "Você vai entender a lógica por trás da captação. Como estruturar uma operação que atrai capital — não como fazer pitch para investidor.",
   },
   {
-    question: "A aula ensina construção?",
-    answer: "Não. O foco é o raciocínio empresarial por trás da incorporação: oportunidade, produto, viabilidade, estruturação, operação e comercialização.",
+    question: "É aula de engenharia ou de negócios?",
+    answer: "De negócios. Zero conteúdo técnico de obra. 100% sobre como estruturar, viabilizar e operar incorporações como empresário.",
   },
   {
-    question: "Vou aprender sobre incorporação?",
-    answer: "Sim. A aula apresenta os elementos que fazem parte do ecossistema de incorporação e como eles mudam a leitura de uma oportunidade imobiliária.",
+    question: "Funciona para quem constrói casas ou só para prédios?",
+    answer: "Funciona para qualquer escala. Os princípios são os mesmos — o que muda é o tamanho da operação.",
   },
   {
-    question: "Como recebo meu acesso?",
-    answer: "Após a confirmação da inscrição, as orientações de acesso são enviadas pelo canal informado no cadastro.",
-  },
-  {
-    question: "A aula será ao vivo?",
-    answer: "O formato detalhado da aula é comunicado junto da confirmação da inscrição.",
+    question: "A aula é ao vivo ou gravada?",
+    answer: "Ao vivo, na quinta-feira às 20h. Quem se inscrever recebe também a gravação por tempo limitado.",
   },
   {
     question: "Quanto tempo dura?",
-    answer: "A duração prevista é comunicada junto das orientações de acesso.",
+    answer: "Entre 1h30 e 2h, dependendo das perguntas. O conteúdo é denso — venha preparado para anotar.",
+  },
+  {
+    question: "Tem certificado?",
+    answer: "Não. Isso não é curso de formação. É uma aula prática para quem quer resultado, não diploma.",
   },
 ];
 
@@ -186,7 +185,7 @@ export default function Home() {
               <a key={label} href={href}><span>{number}</span>{label}</a>
             ))}
           </nav>
-          <a href="#inscricao" className="header-cta" onClick={() => scrollAndTrack("header")}>Participar da aula <ArrowRight size={16} /></a>
+          <a href="#inscricao" className="header-cta" onClick={() => scrollAndTrack("header")}>Garantir minha vaga <ArrowRight size={16} /></a>
           <button className="mobile-menu-trigger" aria-label="Abrir menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -214,101 +213,102 @@ export default function Home() {
             <div className="hero-image-caption"><span>JOSÉ CARLOS CARDOSO</span><span>ESCOLA DE INCORPORADORES</span></div>
           </div>
           <div className="hero-content">
-            <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> ESCOLA DE INCORPORADORES</span>
-            <h1>Você sabe construir.<br /><span>Mas seu modelo de negócio ainda te prende a uma obra por vez?</span></h1>
-            <p className="hero-lead">Na próxima quinta-feira, José Carlos Cardoso vai mostrar por que alguns construtores continuam dependendo do próprio capital e de uma operação por vez — e o que muda quando começam a pensar como incorporadores.</p>
-            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE</span></div>
+            <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> AO VIVO E ONLINE</span>
+            <h1>Você constrói bem.<br /><span>Mas continua refém do próprio capital?</span></h1>
+            <p className="hero-lead">Na quinta-feira, vou mostrar como construtores estão saindo do ciclo de "uma obra por vez" e montando operações de incorporação — usando dinheiro de terceiros, com estrutura profissional e lucro de verdade.</p>
+            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE E GRATUITO</span></div>
             <div className="hero-actions">
-              <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero participar da aula <ArrowDownRight size={19} /></a>
-              <a href="#diagnostico" className="quiet-link">Entender a diferença <MoveRight size={17} /></a>
+              <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero sair desse ciclo <ArrowDownRight size={19} /></a>
+              <a href="#diagnostico" className="quiet-link">Ver se é pra mim <MoveRight size={17} /></a>
             </div>
-            <p className="microcopy">Inscrição rápida <i /> Acesso online <i /> Condições conforme disponibilidade real</p>
+            <p className="microcopy">Vagas limitadas <i /> Aula ao vivo <i /> Acesso imediato após inscrição</p>
           </div>
           <div className="hero-page-number"><span>01</span><small>/ 08</small></div>
         </section>
 
         <section id="diagnostico" className="section section--paper diagnosis-section">
-          <div className="section-index"><span>01</span><div /><small>DIAGNÓSTICO</small></div>
+          <div className="section-index"><span>01</span><div /><small>O PROBLEMA</small></div>
           <div className="section-intro split-heading">
-            <span className="section-kicker">O ciclo que parece crescimento</span>
-            <h2>Talvez o problema não esteja na sua obra.<br /><em>Esteja no modelo por trás dela.</em></h2>
+            <span className="section-kicker">A armadilha do construtor competente</span>
+            <h2>Você não tem um problema de obra.<br /><em>Tem um problema de modelo.</em></h2>
           </div>
           <div className="cycle-layout">
             <div className="cycle-copy">
-              <p>Você encontra o terreno, coloca seu recurso, constrói, espera vender e só então recupera o capital para começar novamente.</p>
-              <p className="cycle-statement">Você pode estar construindo imóveis sem ter construído uma incorporadora.</p>
+              <p>Todo mês você vê o mesmo filme: acha um terreno, coloca SEU dinheiro, constrói, torce pra vender rápido — e só aí respira pra começar de novo.</p>
+              <p className="cycle-statement">Enquanto isso, incorporadores que construem pior que você estão faturando 10x mais. A diferença não é talento. É estrutura.</p>
             </div>
             <div className="cycle-diagram" aria-label="Ciclo da obra única">
-              <div className="diagram-label"><span>MODELO RECORRENTE</span><strong>Ciclo da obra única</strong></div>
+              <div className="diagram-label"><span>O CICLO QUE TE PRENDE</span><strong>A roda que nunca para</strong></div>
               <div className="cycle-track">
-                <CycleStep number="01">Terreno</CycleStep><ArrowDownRight />
-                <CycleStep number="02">Recurso próprio</CycleStep><ArrowDownRight />
-                <CycleStep number="03">Obra</CycleStep><ArrowDownRight />
-                <CycleStep number="04">Venda</CycleStep><ArrowDownRight />
-                <CycleStep number="05">Recuperação</CycleStep>
+                <CycleStep number="01">Acha terreno</CycleStep><ArrowDownRight />
+                <CycleStep number="02">Investe tudo</CycleStep><ArrowDownRight />
+                <CycleStep number="03">Constrói</CycleStep><ArrowDownRight />
+                <CycleStep number="04">Torce pra vender</CycleStep><ArrowDownRight />
+                <CycleStep number="05">Recupera capital</CycleStep>
               </div>
-              <div className="cycle-return"><span>RECOMEÇA</span><ArrowRight size={17} /></div>
+              <div className="cycle-return"><span>VOLTA PRO ZERO</span><ArrowRight size={17} /></div>
             </div>
           </div>
         </section>
 
         <section id="diferenca" className="section section--ink difference-section">
-          <div className="section-index section-index--light"><span>02</span><div /><small>A MUDANÇA DE LEITURA</small></div>
+          <div className="section-index section-index--light"><span>02</span><div /><small>A VIRADA</small></div>
           <div className="difference-head split-heading">
-            <span className="section-kicker section-kicker--light">Construção não é o ecossistema</span>
-            <h2>Construir e incorporar <em>não são a mesma coisa.</em></h2>
+            <span className="section-kicker section-kicker--light">A diferença que ninguém te explicou</span>
+            <h2>Construtor troca tempo por dinheiro.<br /><em>Incorporador multiplica dinheiro com estrutura.</em></h2>
           </div>
           <div className="comparison">
             <article className="comparison-column comparison-column--builder">
               <header><span>01</span><h3>Construtor</h3></header>
-              <p>Domina a execução.</p>
-              <ul><li>Obra</li><li>Orçamento</li><li>Prazo</li><li>Entrega</li></ul>
+              <p>Executa a obra. Depende do próprio capital.</p>
+              <ul><li>Usa dinheiro próprio</li><li>Uma obra por vez</li><li>Lucro limitado ao esforço</li><li>Refém da venda</li></ul>
             </article>
             <article className="comparison-column comparison-column--developer">
               <header><span>02</span><h3>Incorporador</h3></header>
-              <p>Estrutura a operação inteira.</p>
-              <ul><li>Mercado e produto</li><li>Viabilidade e estruturação</li><li>Parceiros e capital</li><li>Gestão e comercialização</li><li>Risco e saída</li></ul>
+              <p>Estrutura a operação. Usa capital de terceiros.</p>
+              <ul><li>Atrai investidores</li><li>Múltiplas operações simultâneas</li><li>Lucro escalável</li><li>Controla o risco</li><li>Negócio que funciona sem ele</li></ul>
             </article>
           </div>
-          <blockquote>Construir exige dominar a obra. Incorporar exige dominar o ecossistema.</blockquote>
+          <blockquote>A mesma obra, o mesmo terreno, o mesmo mercado — resultados completamente diferentes. A diferença está no modelo, não no tijolo.</blockquote>
         </section>
 
         <section id="aula" className="section section--offwhite class-section">
           <div className="class-photo"><img src={planImageUrl} alt="Materiais de estudo de viabilidade imobiliária" /><div className="photo-folio">AULA<br />EXECUTIVA</div></div>
           <div className="class-copy">
-            <div className="section-index"><span>03</span><div /><small>O QUE SERÁ ENSINADO</small></div>
-            <h2>Em uma aula, você vai entender o que muda quando começa a pensar <em>como incorporador.</em></h2>
+            <div className="section-index"><span>03</span><div /><small>O QUE VOCÊ VAI APRENDER</small></div>
+            <h2>Em 2 horas, você vai entender o que levei anos <em>para descobrir.</em></h2>
             <ol className="learning-list">
               {learnings.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}
             </ol>
-            <a href="#inscricao" className="button button--ink" onClick={() => scrollAndTrack("aprendizados")}>Quero participar da aula <ArrowDownRight size={19} /></a>
+            <a href="#inscricao" className="button button--ink" onClick={() => scrollAndTrack("aprendizados")}>Quero aprender isso <ArrowDownRight size={19} /></a>
           </div>
         </section>
 
         <section className="section diagnosis-list-section">
           <div className="diagnosis-list-copy">
-            <span className="section-kicker section-kicker--light">Leitura de momento</span>
-            <h2>Essa aula é para você que...</h2>
-            <p>Já domina uma parte importante do processo, mas quer enxergar a operação imobiliária como uma estrutura de negócio — não apenas como a próxima obra.</p>
+            <span className="section-kicker section-kicker--light">Checklist rápido</span>
+            <h2>Essa aula é pra você se...</h2>
+            <p>Não é pra curiosos. É pra quem já está no jogo e quer jogar diferente.</p>
           </div>
           <div className="diagnosis-checklist">
             {diagnosis.map((item, index) => <div className="diagnosis-item" key={item}><span>0{index + 1}</span><CircleCheck size={19} /><p>{item}</p></div>)}
           </div>
-          <div className="diagnosis-footer"><strong>Se você se identificou com três ou mais pontos, essa aula foi pensada para o momento em que você está.</strong><a href="#inscricao" className="text-link text-link--gold" onClick={() => scrollAndTrack("diagnostico_lista")}>Quero participar <ArrowRight size={17} /></a></div>
+          <div className="diagnosis-footer"><strong>Marcou 3 ou mais? Então você está exatamente onde eu estava antes de fazer a virada. A aula foi feita pra esse momento.</strong><a href="#inscricao" className="text-link text-link--gold" onClick={() => scrollAndTrack("diagnostico_lista")}>Garantir minha vaga <ArrowRight size={17} /></a></div>
         </section>
 
         <section className="section authority-section section--paper">
           <div className="authority-photo-placeholder">
             <img src={josePhotoUrl} alt="José Carlos Cardoso, empresário e incorporador" />
             <div className="authority-photo-shade" />
-            <div className="authority-photo-caption"><span>JCC / 01</span><strong>Raciocínio empresarial<br />antes da obra.</strong></div>
+            <div className="authority-photo-caption"><span>JCC / 01</span><strong>Do canteiro de obras<br />para a sala de operações.</strong></div>
           </div>
           <div className="authority-copy">
-            <div className="section-index"><span>04</span><div /><small>QUEM CONDUZ A AULA</small></div>
+            <div className="section-index"><span>04</span><div /><small>QUEM VAI TE ENSINAR</small></div>
             <h2>José Carlos<br /><em>Cardoso</em></h2>
-            <p className="role">Empresário, incorporador e fundador da Escola de Incorporadores.</p>
-            <p>José não ensina apenas como executar uma obra. Ele ensina o raciocínio empresarial que organiza as decisões por trás da incorporação.</p>
-            <p className="authority-note">A autoridade da aula é construída pela experiência prática e pela visão de mercado, sem números genéricos de faturamento, VGV ou quantidade de obras.</p>
+            <p className="role">Incorporador, empresário e fundador da Escola de Incorporadores.</p>
+            <p>Comecei como você: botando meu dinheiro, fazendo uma obra por vez, torcendo pra vender. Até entender que o problema não era o mercado — era o modelo.</p>
+            <p>Hoje estruturo operações de incorporação com capital de terceiros, risco controlado e múltiplos projetos simultâneos. Nessa aula, vou te mostrar exatamente como fiz essa transição.</p>
+            <p className="authority-note">Sem papo motivacional. Sem teoria de MBA. O que funciona no mundo real, explicado por quem faz.</p>
           </div>
         </section>
 
@@ -316,49 +316,49 @@ export default function Home() {
           <img className="cost-image" src={facadeImageUrl} alt="Fachada de empreendimento contemporâneo" />
           <div className="cost-overlay" />
           <div className="cost-content">
-            <span className="section-kicker section-kicker--light">A decisão antes da próxima obra</span>
-            <h2>Sua próxima obra pode ser apenas mais uma obra.<br /><em>Ou pode ser o começo de um novo modelo de negócio.</em></h2>
-            <div className="cost-list"><span>Mais capital imobilizado.</span><span>Mais dependência da venda.</span><span>Mais um ciclo começando do zero.</span></div>
-            <p>A mudança começa quando o empresário passa a enxergar a operação inteira.</p>
+            <span className="section-kicker section-kicker--light">O custo de continuar igual</span>
+            <h2>Cada obra que você faz no modelo antigo<br /><em>é dinheiro que você deixa na mesa.</em></h2>
+            <div className="cost-list"><span>Mais capital travado.</span><span>Mais noites sem dormir.</span><span>Mais anos no mesmo lugar.</span></div>
+            <p>A pergunta não é se você pode fazer diferente. É quanto tempo mais você vai esperar.</p>
           </div>
         </section>
 
         <section id="inscricao" className="section registration-section section--offwhite">
           <div className="registration-intro">
-            <div className="section-index"><span>05</span><div /><small>CONVITE</small></div>
-            <h2>Na quinta-feira, eu vou abrir essa estrutura <em>para você.</em></h2>
-            <p>Uma aula para empresários que não querem apenas construir mais imóveis. Querem aprender a estruturar negócios imobiliários.</p>
+            <div className="section-index"><span>05</span><div /><small>INSCRIÇÃO</small></div>
+            <h2>Quinta-feira, 20h.<br /><em>Sua chance de mudar o jogo.</em></h2>
+            <p>Uma aula ao vivo, sem enrolação, direto ao ponto. Pra quem está pronto para parar de construir como pedreiro e começar a operar como empresário.</p>
             <div className="event-details">
-              <div><span>AULA</span><strong>Como parar de construir uma obra por vez e começar a lucrar de verdade</strong></div>
+              <div><span>AULA</span><strong>De Construtor a Incorporador: O Mapa da Transição</strong></div>
               <div><span>COM</span><strong>José Carlos Cardoso</strong></div>
-              <div><span>DATA</span><strong>Quinta-feira</strong></div>
-              <div><span>HORÁRIO</span><strong>20:00h</strong></div>
-              <div><span>FORMATO</span><strong>Online</strong></div>
-              <div><span>BÔNUS</span><strong>Aula gravada para quem adquirir a participação</strong></div>
-              <div><span>DIAGNÓSTICO</span><strong>Leitura do momento atual para orientar o próximo nível</strong></div>
-              <div><span>INVESTIMENTO</span><strong>Condições de participação apresentadas no próximo passo</strong></div>
+              <div><span>DATA</span><strong>Quinta-feira, 20h</strong></div>
+              <div><span>DURAÇÃO</span><strong>Aproximadamente 2 horas</strong></div>
+              <div><span>FORMATO</span><strong>Ao vivo, online, com chat aberto</strong></div>
+              <div><span>BÔNUS</span><strong>Gravação disponível por 48h</strong></div>
+              <div><span>MATERIAL</span><strong>PDF com o mapa da incorporação</strong></div>
+              <div><span>INVESTIMENTO</span><strong>Gratuito (vagas limitadas)</strong></div>
             </div>
           </div>
           <form className="registration-form" onSubmit={handleSubmit}>
-            <div className="form-topline"><span>PROTOCOLO DE INSCRIÇÃO</span><span>EI / 01</span></div>
-            <h3>Ficha de participação.</h3>
-            <p>Informe somente o necessário. Em seguida, você será direcionado ao checkout para concluir a participação.</p>
-            <label>Nome completo<input name="name" autoComplete="name" placeholder="Como podemos chamar você?" required /></label>
-            <label>E-mail profissional<input name="email" type="email" autoComplete="email" placeholder="voce@empresa.com.br" required /></label>
-            <label>WhatsApp<input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" required /></label>
-            <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? "Direcionando ao checkout..." : "Garantir minha participação"} <ArrowDownRight size={19} /></button>
-            <p className="form-microcopy">Ao avançar, registramos sua inscrição e direcionamos você ao checkout seguro da Hotmart.</p>
-            {captureError && <p className="form-microcopy form-microcopy--error">Não foi possível registrar sua inscrição neste momento. Tente novamente.</p>}
+            <div className="form-topline"><span>GARANTA SUA VAGA</span><span>EI / 01</span></div>
+            <h3>Inscrição gratuita.</h3>
+            <p>Preencha abaixo e receba o link de acesso no seu WhatsApp e email.</p>
+            <label>Seu nome<input name="name" autoComplete="name" placeholder="Como quer ser chamado?" required /></label>
+            <label>Seu melhor email<input name="email" type="email" autoComplete="email" placeholder="email@exemplo.com" required /></label>
+            <label>WhatsApp (com DDD)<input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" required /></label>
+            <button type="submit" className="button button--gold button--full" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? "Confirmando vaga..." : "Quero minha vaga gratuita"} <ArrowDownRight size={19} /></button>
+            <p className="form-microcopy">Ao se inscrever, você concorda em receber comunicações sobre a aula. Pode sair quando quiser.</p>
+            {captureError && <p className="form-microcopy form-microcopy--error">Erro ao confirmar. Tente novamente ou entre em contato.</p>}
           </form>
         </section>
 
         <section className="section final-cta-section">
           <span className="final-number">06</span>
-          <div><p>Capital próprio pode construir uma obra.</p><h2>Modelo de negócio pode construir <em>uma incorporadora.</em></h2><p className="final-subtitle">O próximo nível do construtor não é simplesmente construir mais. É aprender a incorporar.</p><a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("cta_final")}>Quero estar na aula <ArrowDownRight size={19} /></a></div>
+          <div><p>Você pode continuar construindo uma obra por vez.</p><h2>Ou pode aprender a construir <em>uma incorporadora.</em></h2><p className="final-subtitle">Quinta-feira, 20h. Online. Gratuito. A decisão é sua.</p><a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("cta_final")}>Garantir minha vaga agora <ArrowDownRight size={19} /></a></div>
         </section>
 
         <section className="section faq-section">
-          <div className="faq-intro"><span className="section-kicker">Perguntas objetivas</span><h2>Antes de você decidir.</h2><p>O que já está definido sobre a aula e o que ainda precisa ser confirmado pela organização.</p></div>
+          <div className="faq-intro"><span className="section-kicker">Perguntas frequentes</span><h2>Antes de decidir.</h2><p>Respostas diretas para dúvidas comuns.</p></div>
           <Accordion type="single" collapsible className="faq-list">
             {faqs.map((faq, index) => <AccordionItem value={`item-${index}`} key={faq.question}><AccordionTrigger><span>0{index + 1}</span>{faq.question}<ChevronDown /></AccordionTrigger><AccordionContent>{faq.answer}</AccordionContent></AccordionItem>)}
           </Accordion>
@@ -367,11 +367,11 @@ export default function Home() {
 
       <footer className="site-footer">
         <BrandLockup />
-        <p>© Escola de Incorporadores <span>•</span> [PREENCHER: dados legais]</p>
+        <p>© Escola de Incorporadores <span>•</span> Todos os direitos reservados</p>
         <a href="#topo">Voltar ao início <ArrowRight size={15} /></a>
       </footer>
 
-      <a href="#inscricao" className="mobile-sticky-cta" onClick={() => scrollAndTrack("sticky_mobile")}><Play size={14} fill="currentColor" /> Quero participar da aula</a>
+      <a href="#inscricao" className="mobile-sticky-cta" onClick={() => scrollAndTrack("sticky_mobile")}><Play size={14} fill="currentColor" /> Garantir minha vaga</a>
     </div>
   );
 }
