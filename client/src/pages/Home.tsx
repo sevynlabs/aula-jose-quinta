@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     question: "A aula é ao vivo ou gravada?",
-    answer: "Ao vivo, na quinta-feira às 20h. Quem se inscrever recebe também a gravação por tempo limitado.",
+    answer: "Ao vivo, na terça-feira, dia 04 às 20h. Quem se inscrever recebe também a gravação por tempo limitado.",
   },
   {
     question: "Quanto tempo dura?",
@@ -257,8 +257,8 @@ export default function Home() {
           <div className="hero-content">
             <span className="section-kicker section-kicker--light">AULA EXECUTIVA <i /> AO VIVO E ONLINE</span>
             <h1>Você constrói bem.<br /><span>Mas continua refém do próprio capital?</span></h1>
-            <p className="hero-lead">Na quinta-feira, vou mostrar como construtores estão saindo do ciclo de "uma obra por vez" e montando operações de incorporação — usando dinheiro de terceiros, com estrutura profissional e lucro de verdade.</p>
-            <div className="event-line"><span><MapPin size={15} /> QUINTA-FEIRA</span><i /><span>20:00H</span><i /><span>ONLINE • GRATUITO</span></div>
+            <p className="hero-lead">Na terça-feira, dia 04, vou mostrar como construtores estão saindo do ciclo de "uma obra por vez" e montando operações de incorporação — usando dinheiro de terceiros, com estrutura profissional e lucro de verdade.</p>
+            <div className="event-line"><span><MapPin size={15} /> TERÇA-FEIRA, DIA 04</span><i /><span>20:00H</span><i /><span>ONLINE • GRATUITO</span></div>
             <div className="hero-actions">
               <a href="#inscricao" className="button button--gold" onClick={() => scrollAndTrack("hero")}>Quero sair desse ciclo <ArrowDownRight size={19} /></a>
               <a href="#diagnostico" className="quiet-link">Ver se é pra mim <MoveRight size={17} /></a>
@@ -323,12 +323,12 @@ export default function Home() {
         <section id="inscricao" className="section registration-section section--offwhite">
           <div className="registration-intro">
             <div className="section-index"><span>04</span><div /><small>INSCRIÇÃO</small></div>
-            <h2>Quinta-feira, 20h.<br /><em>Sua chance de mudar o jogo.</em></h2>
+            <h2>Terça-feira, dia 04, 20h.<br /><em>Sua chance de mudar o jogo.</em></h2>
             <p>Uma aula ao vivo, sem enrolação, direto ao ponto. Pra quem está pronto para parar de construir como pedreiro e começar a operar como empresário.</p>
             <div className="event-details">
               <div><span>AULA</span><strong>De Construtor a Incorporador: O Mapa da Transição</strong></div>
               <div><span>COM</span><strong>José Carlos Cardoso</strong></div>
-              <div><span>DATA</span><strong>Quinta-feira, 20h</strong></div>
+              <div><span>DATA</span><strong>Terça-feira, dia 04, 20h</strong></div>
               <div><span>DURAÇÃO</span><strong>Aproximadamente 2 horas</strong></div>
               <div><span>FORMATO</span><strong>Ao vivo, online, com chat aberto</strong></div>
               <div><span>BÔNUS</span><strong>Gravação disponível por 48h</strong></div>
@@ -346,7 +346,7 @@ export default function Home() {
                 <div className="plan-content">
                   <strong>Aula ao Vivo</strong>
                   <span className="plan-price">Gratuito</span>
-                  <span className="plan-desc">Acesso à aula ao vivo na quinta-feira</span>
+                  <span className="plan-desc">Acesso à aula ao vivo na terça-feira, dia 04</span>
                 </div>
               </label>
               <label className={`plan-option ${selectedPlan === "gravacao" ? "plan-option--selected" : ""}`}>
